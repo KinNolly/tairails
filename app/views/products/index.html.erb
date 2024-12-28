@@ -1,0 +1,19 @@
+<h1>Sản Phẩm</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to 'Xem Chi Tiết', product %></td>
+      </tr>
+    <% end %>
+    <td><%= link_to "Thêm Sản Phẩm", new_product_path %></td>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<h1>Thêm Sản Phẩm</h1>
+
+<%= form_with model: @product, local: true do |form| %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Thông tin Sản Phẩm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= form.label :name, "Tên Sản Phẩm" %></td>
+        <td><%= form.text_field :name, class: "form-control" %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%= form.submit "Thêm Sản Phẩm", class: "btn btn-success" %>
+    <%= link_to "Hủy", products_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>
