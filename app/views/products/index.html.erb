@@ -10,14 +10,12 @@
     </tr>
   </thead>
   <tbody>
-    <%= link_to "New product", new_product_path if authenticated? %>
-
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
         <td><%= link_to 'Xem Chi Tiết', product %></td>
       </tr>
     <% end %>
-    <td><%= link_to "Thêm Sản Phẩm", new_product_path %></td>
+    <td><%= link_to "Thêm Sản Phẩm", new_product_path if authenticated?%></td>
   </tbody>
 </table>
