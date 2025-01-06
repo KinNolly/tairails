@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :products
-  resources :users, only: [:index, :create, :new, :edit, :update]
-
-  get 'user/:id/delete', to: 'users#delete', as: 'user_delete'
   
   delete "/products/:id", to: "products#destroy"
   
