@@ -1,19 +1,146 @@
+<style>
+/* General form styling */
+.form-table {
+  display: table;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.form-row {
+  display: table-row;
+  margin-bottom: 15px;
+}
+
+.form-cell {
+  display: table-cell;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.form-label {
+  font-weight: bold;
+  text-align: right;
+  display: inline-block;
+  width: 150px;
+  color: #333;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Focus and hover effects for form inputs */
+.form-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Submit button styling */
+.submit-row {
+  text-align: center;
+}
+
+.submit-button {
+  padding: 12px 24px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+/* Responsive design: For small screens */
+@media screen and (max-width: 600px) {
+  .form-table {
+    padding: 15px;
+  }
+
+  .form-label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+
+  .form-row {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 15px;
+  }
+}
+</style>
+
 <%= form_with model: product do |form| %>
-    <div>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+  <div class="form-table">
+    <div class="form-row">
+      <div class="form-cell">
+        <%= form.label :name, class: "form-label" %>
+      </div>
+      <div class="form-cell">
+        <%= form.text_field :name, class: "form-input" %>
+      </div>
     </div>
-    <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
+
+    <div class="form-row">
+      <div class="form-cell">
+        <%= form.label :description, class: "form-label" %>
+      </div>
+      <div class="form-cell">
+        <%= form.rich_text_area :description, class: "form-input" %>
+      </div>
     </div>
-    <div>
-    <%= form.label :featured_image, style: "display: block" %>
-    <%= form.file_field :featured_image, accept: "image/*" %>
+
+    <div class="form-row">
+      <div class="form-cell">
+        <%= form.label :featured_image, class: "form-label" %>
+      </div>
+      <div class="form-cell">
+        <%= form.file_field :featured_image, accept: "image/*", class: "form-input" %>
+      </div>
     </div>
-  
-    <div>
-      <%= form.submit %>
+
+    <div class="form-row">
+      <div class="form-cell">
+        <%= form.label :inventory_count, class: "form-label" %>
+      </div>
+      <div class="form-cell">
+        <%= form.number_field :inventory_count, class: "form-input" %>
+      </div>
     </div>
-  <% end %>
-  
+
+    <div class="form-row submit-row">
+      <div class="form-cell" colspan="2">
+        <%= form.submit "Submit", class: "submit-button" %>
+        <%= link_to 'Cancel', products_path, class: "cancel-button" %> <!-- Replace 'products_path' with your cancel URL -->
+      </div>
+    </div>
+  </div>
+<% end %>
+
