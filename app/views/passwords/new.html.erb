@@ -1,8 +1,103 @@
+<style>
+/* app/assets/stylesheets/password_reset.css */
+h1 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+
+.password-reset-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.password-reset-form input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-reset-form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.password-reset-form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.alert {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+</style>
+
 <h1>Forgot your password?</h1>
 
 <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 
 <%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
+  <style>
+    h1 {
+      color: #333;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .password-reset-form {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .password-reset-form input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .password-reset-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .password-reset-form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .alert {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <div class="password-reset-form">
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
+    <%= form.submit "Email reset instructions" %>
+  </div>
 <% end %>

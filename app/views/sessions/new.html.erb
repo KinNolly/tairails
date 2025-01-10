@@ -1,11 +1,70 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<style>
+div.alert {
+  color: red;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid red;
+  background-color: #ffdddd;
+  margin-bottom: 20px;
+}
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
+div.notice {
+  color: green;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid green;
+  background-color: #ddffdd;
+  margin-bottom: 20px;
+}
+
+/* Form input fields styling */
+.form-input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Styling for submit button */
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styling for forgot password link */
+.forgot-password-link {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+<%= tag.div(flash[:alert], style: "color:red; font-weight:bold; padding: 10px;") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green; font-weight:bold; padding: 10px;") if flash[:notice] %>
+
+<%= form_with url: session_path, html: { class: 'sign-in-form' } do |form| %>
+  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: 'form-input' %><br>
+  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: 'form-input' %><br>
+  <%= form.submit "Sign in", class: 'submit-btn' %>
 <% end %>
 <br>
 
-<%= link_to "Forgot password?", new_password_path %>
+<%= link_to "Forgot password?", new_password_path, class: 'forgot-password-link' %>
