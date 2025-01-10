@@ -12,6 +12,14 @@
         <td><%= form.label :name, "Tên Sản Phẩm" %></td>
         <td><%= form.text_field :name, class: "form-control" %></td>
       </tr>
+      <tr>
+        <td><%= form.label :description %><td>
+        <%= form.text_area :description %>
+      </tr>
+      <tr>
+        <td><%= form.label :featured_image, style: "display: block" %></td>
+        <td><%= form.file_field :featured_image, accept: "image/*", onchange: "previewImage(event)" %></td>
+      </tr>
     </tbody>
   </table>
 
