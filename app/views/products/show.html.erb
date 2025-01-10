@@ -1,15 +1,82 @@
+<style>
+/* Styles for the product details */
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #666;
+    margin: 1rem 0;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.back-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Optional: Hover effects */
+.btn:hover {
+    opacity: 0.8;
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+</style>
+
 <% cache @product do %>
-    <h1><%= @product.name %></h1>
-    <%= @product.description %>
-    <%= image_tag @product.featured_image if @product.featured_image.attached? %>
+    <h1 class="product-title"><%= @product.name %></h1>
+    <p class="product-description"><%= @product.description %></p>
+    <%= image_tag @product.featured_image, class: 'product-image' if @product.featured_image.attached? %>
     <%= render "inventory", product: @product %>
-
 <% end %>
-<div class="form-actions">
-    <%= link_to "Back", products_path %>
-    <% if authenticated? %>
-        <%= link_to "Edit", edit_product_path(@product) %>
-        <%= button_to "Xóa", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-    <% end %>
 
+<div class="form-actions">
+    <%= link_to "Back", products_path, class: 'btn back-btn' %>
+    <% if authenticated? %>
+        <%= link_to "Edit", edit_product_path(@product), class: 'btn edit-btn' %>
+        <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: 'btn delete-btn' %>
+    <% end %>
 </div>
