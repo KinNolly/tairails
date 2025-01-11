@@ -56,16 +56,10 @@ div.notice {
   text-decoration: underline;
 }
 </style>
-
-<%= tag.div(flash[:alert], style: "color:red; font-weight:bold; padding: 10px;") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green; font-weight:bold; padding: 10px;") if flash[:notice] %>
-
-<%= form_with url: session_path, html: { class: 'sign-in-form' } do |form| %>
+<%= form_with model: user do |form| %>
   <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: 'form-input' %><br>
   <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: 'form-input' %><br>
-  <%= form.submit "Sign in", class: 'submit-btn' %>
-<% end %>
-<br>
+  <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: 'form-input' %><br>
 
-<%= link_to "Forgot password?", new_password_path, class: 'forgot-password-link' %>
-<%= link_to "Sign up", new_user_path, class: 'forgot-password-link' %>
+  <%= form.submit "Sign up", class: 'submit-btn' %>
+<% end %>
