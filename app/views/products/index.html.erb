@@ -1,4 +1,5 @@
 <%= link_to "Login", new_session_path unless authenticated? %>
+<%= link_to "Sign up", new_user_path unless authenticated? %>
 <h1><%= t "Chào mừng đến với BAKERY Bánh Ngọt" %></h1>
 <h1><%= t "Sản Phẩm" %></h1>
 
